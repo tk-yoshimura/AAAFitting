@@ -1,7 +1,7 @@
 # MultiPrecisionComplexFitting
  MultiPrecision Complex Fitting Implements
 
-### The AAA algorithm
+## The AAA algorithm
 
 The package includes a C# implementation of the AAA algorithm for rational
 approximation described in the paper "The AAA Algorithm for Rational
