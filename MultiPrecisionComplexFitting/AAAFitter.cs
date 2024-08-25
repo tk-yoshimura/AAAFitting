@@ -10,7 +10,7 @@ namespace MultiPrecisionComplexFitting {
     // SIAM Journal on Scientific Computing 2018 40:3, A1494-A1522
     // https://doi.org/10.1137/16M1106122
     public static class AAAFitter<N> where N : struct, IConstant {
-        public static BarycentricRational<N> Approx(
+        public static BarycentricRational<N> ExecuteFitting(
             ComplexVector<N> z, ComplexVector<N> f,
             MultiPrecision<N> reltol, MultiPrecision<N> abstol, int max_points = 128) {
 
@@ -32,31 +32,50 @@ namespace MultiPrecisionComplexFitting {
 
             List<int> indexes = Enumerable.Range(0, f.Dim).ToList();
 
+            BarycentricRational<N> approx = new(Enumerable.Empty<(Complex<N>, Complex<N>, Complex<N>)>());
+
             while (nodes.Count < max_points && nodes.Count <= indexes.Count) {
-                List<MultiPrecision<N>> error_norms = (f - r).Select(v => v.val.Norm).ToList();
-                int index_maxerr = error_norms.IndexOf(error_norms.Max());
+                List<MultiPrecision<N>> errors = (f - r).Select(v => v.val.Magnitude).ToList();
+                int index_maxerror = -1;
+                MultiPrecision<N> maxerror = 0;
 
-                nodes.Add(z[index_maxerr]);
-                values.Add(f[index_maxerr]);
+                bool is_allok = true;
+                
+                for (int i = 0; i < errors.Count; i++) {
+                    if (maxerror < errors[i]) {
+                        maxerror = errors[i];
+                        index_maxerror = i;
+                    }
+                    if (errors[i] > eps[i]) {
+                        is_allok = false;
+                    }
+                }
 
-                indexes.Remove(index_maxerr);
+                if (is_allok && nodes.Count >= 1) {
+                    break;
+                }
 
-                ComplexMatrix<N> c = ComplexMatrix<N>.Zero(indexes.Count, nodes.Count);
+                nodes.Add(z[index_maxerror]);
+                values.Add(f[index_maxerror]);
+
+                indexes.Remove(index_maxerror);
+
                 ComplexMatrix<N> a = ComplexMatrix<N>.Zero(indexes.Count, nodes.Count);
 
                 for (int i = 0; i < indexes.Count; i++) {
                     for (int j = 0; j < nodes.Count; j++) {
-                        c[i, j] = Complex<N>.Inverse(z[indexes[i]] - nodes[j]);
-                        a[i, j] = (f[indexes[i]] - values[j]) * c[i, j];
+                        a[i, j] = (f[indexes[i]] - values[j]) / (z[indexes[i]] - nodes[j]);
                     }
                 }
 
                 (ComplexVector<N> weights, _) = MatrixUtil<N>.SmallestSingularValueVector(a);
 
-                BarycentricRational<N> approx = new(nodes, values, (Complex<N>[])weights);
+                approx = new(nodes, values, (Complex<N>[])weights);
+
+                r = approx.FittingValue(z);
             }
 
-            throw new NotImplementedException();
+            return approx;
         }
     }
 }

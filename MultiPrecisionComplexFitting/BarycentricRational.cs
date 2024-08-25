@@ -1,5 +1,6 @@
 ﻿using MultiPrecision;
 using MultiPrecisionComplex;
+using MultiPrecisionComplexAlgebra;
 using System.Collections.ObjectModel;
 
 namespace MultiPrecisionComplexFitting {
@@ -32,6 +33,20 @@ namespace MultiPrecisionComplexFitting {
             }
 
             Complex<N> r = n / d;
+
+            return r;
+        }
+
+        public ComplexVector<N> FittingValue(ComplexVector<N> z) {
+            ComplexVector<N> n = ComplexVector<N>.Zero(z.Dim), d = ComplexVector<N>.Zero(z.Dim);
+
+            foreach ((Complex<N> node, Complex<N> value, Complex<N> weight) in Parameters) {
+                ComplexVector<N> v = weight / (z - node);
+                n += value * v;
+                d += v;
+            }
+
+            ComplexVector<N> r = n / d;
 
             return r;
         }
