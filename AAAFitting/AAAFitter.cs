@@ -34,7 +34,7 @@ namespace AAAFitting {
 
             BarycentricRational<N> approx = new(Enumerable.Empty<(Complex<N>, Complex<N>, Complex<N>)>());
 
-            while (nodes.Count < max_points && nodes.Count <= indexes.Count) {
+            while (nodes.Count < max_points && nodes.Count < indexes.Count) {
                 List<MultiPrecision<N>> errors = (f - r).Select(v => v.val.Magnitude).ToList();
                 int index_maxerror = -1;
                 MultiPrecision<N> maxerror = 0;
@@ -69,6 +69,10 @@ namespace AAAFitting {
                 }
 
                 (ComplexVector<N> weights, _) = MatrixUtil<N>.SmallestSingularValueVector(a);
+
+                if (!ComplexVector<N>.IsFinite(weights)) {
+                    break;
+                }
 
                 approx = new(nodes, values, (Complex<N>[])weights);
 
