@@ -2,11 +2,11 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("MultiPrecision.ComplexFitting")]
-[assembly: AssemblyDescription("MultiPrecision Complex Fitting Implements")]
+[assembly: AssemblyTitle("MultiPrecision.AAAFitting")]
+[assembly: AssemblyDescription("AAA Complex Fitting Implements")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("MultiPrecision.ComplexFitting")]
+[assembly: AssemblyProduct("MultiPrecision.AAAFitting")]
 [assembly: AssemblyCopyright("Copyright © T.Yoshimura 2024")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
