@@ -33,19 +33,17 @@ namespace AAAFitting {
             for ((int iter, bool convergenced) = (1, false); iter <= 65536 && !convergenced; iter++) {
                 for (int i = 0; i < vs.Length; i++) {
                     vs[i].vec = r * vs[i].vec;
+                    
+                    vs[i].lambda =
+                        ComplexVector<Plus4<N>>.Dot(vs[i].vec, vs[i].prev_vec) /
+                        ComplexVector<Plus4<N>>.Dot(vs[i].vec, vs[i].vec);
+
+                    vs[i].vec = vs[i].vec.Normal;
                 }
 
-                if ((iter % 4) == 0) {
-                    for (int i = 0; i < vs.Length; i++) {
-                        vs[i].lambda =
-                            ComplexVector<Plus4<N>>.Dot(vs[i].vec, vs[i].prev_vec) /
-                            ComplexVector<Plus4<N>>.Dot(vs[i].vec, vs[i].vec);
+                vs = [.. vs.OrderBy(item => item.lambda.Norm)];
 
-                        vs[i].vec = vs[i].vec.Normal;
-                    }
-
-                    vs = [.. vs.OrderBy(item => item.lambda.Norm)];
-
+                if (iter > 4) {
                     MultiPrecision<Plus4<N>> diff = (vs[0].prev_vec - vs[0].vec).Norm;
 
                     if (diff < 1e-4) {
