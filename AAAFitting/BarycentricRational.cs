@@ -28,6 +28,11 @@ namespace AAAFitting {
 
             foreach ((Complex<N> node, Complex<N> value, Complex<N> weight) in Parameters) {
                 Complex<N> v = weight / (z - node);
+
+                if (!Complex<N>.IsFinite(v)) {
+                    return value;
+                }
+
                 n += value * v;
                 d += v;
             }
@@ -38,15 +43,7 @@ namespace AAAFitting {
         }
 
         public ComplexVector<N> FittingValue(ComplexVector<N> z) {
-            ComplexVector<N> n = ComplexVector<N>.Zero(z.Dim), d = ComplexVector<N>.Zero(z.Dim);
-
-            foreach ((Complex<N> node, Complex<N> value, Complex<N> weight) in Parameters) {
-                ComplexVector<N> v = weight / (z - node);
-                n += value * v;
-                d += v;
-            }
-
-            ComplexVector<N> r = n / d;
+            ComplexVector<N> r = (FittingValue, z);
 
             return r;
         }

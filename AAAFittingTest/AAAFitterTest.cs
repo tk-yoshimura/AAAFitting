@@ -18,8 +18,13 @@ namespace AAAFittingTest {
             ComplexVector<Pow2.N4> r = approx.FittingValue(z);
 
             for (int i = 0; i < z.Dim; i++) {
-                Console.WriteLine(f[i]);
+                Console.WriteLine($"{f[i]:e25}");
                 Console.WriteLine($"{r[i]:e20}");
+            }
+
+            for (int i = 0; i < z.Dim; i++) {
+                Assert.IsTrue(MultiPrecision<Pow2.N4>.Abs(f[i] - r[i].R) < 1e-16);
+                Assert.IsTrue(r[i].I == 0);
             }
         }
     }
