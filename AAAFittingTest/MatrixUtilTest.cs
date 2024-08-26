@@ -2,9 +2,9 @@ using MultiPrecision;
 using MultiPrecisionComplex;
 using MultiPrecisionComplexAlgebra;
 
-using MultiPrecisionComplexFitting;
+using AAAFitting;
 
-namespace MultiPrecisionComplexFittingTest {
+namespace AAAFittingTest {
     [TestClass]
     public class MatrixUtilTest {
         [TestMethod]

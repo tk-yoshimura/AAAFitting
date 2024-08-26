@@ -3,7 +3,7 @@ using MultiPrecisionAlgebra;
 using MultiPrecisionComplex;
 using MultiPrecisionComplexAlgebra;
 
-namespace MultiPrecisionComplexFitting {
+namespace AAAFitting {
     // [Reference]
     // The AAA Algorithm for Rational Approximation
     // Yuji Nakatsukasa, Olivier Sete, and Lloyd N. Trefethen

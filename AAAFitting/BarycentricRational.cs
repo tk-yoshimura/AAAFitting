@@ -3,7 +3,7 @@ using MultiPrecisionComplex;
 using MultiPrecisionComplexAlgebra;
 using System.Collections.ObjectModel;
 
-namespace MultiPrecisionComplexFitting {
+namespace AAAFitting {
     public class BarycentricRational<N> where N : struct, IConstant {
         public ReadOnlyCollection<(Complex<N> node, Complex<N> value, Complex<N> weight)> Parameters { get; }
 

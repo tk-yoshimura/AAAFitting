@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35208.52
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiPrecisionComplexFitting", "MultiPrecisionComplexFitting\MultiPrecisionComplexFitting.csproj", "{FE4E7B82-55DF-406E-A16B-386CA3DA21A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AAAFitting", "AAAFitting\AAAFitting.csproj", "{FE4E7B82-55DF-406E-A16B-386CA3DA21A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiPrecisionComplexFittingTest", "MultiPrecisionComplexFittingTest\MultiPrecisionComplexFittingTest.csproj", "{99923C52-DEFF-406D-994E-CEE91C3B2E10}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AAAFittingTest", "AAAFittingTest\AAAFittingTest.csproj", "{99923C52-DEFF-406D-994E-CEE91C3B2E10}"
 	ProjectSection(ProjectDependencies) = postProject
 		{FE4E7B82-55DF-406E-A16B-386CA3DA21A1} = {FE4E7B82-55DF-406E-A16B-386CA3DA21A1}
 	EndProjectSection

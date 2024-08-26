@@ -3,7 +3,7 @@ using MultiPrecisionComplex;
 using MultiPrecisionComplexAlgebra;
 using System.Diagnostics;
 
-namespace MultiPrecisionComplexFitting {
+namespace AAAFitting {
     internal static class MatrixUtil<N> where N : struct, IConstant {
         public static (ComplexVector<N>, Complex<N>) SmallestSingularValueVector(ComplexMatrix<N> m) {
             Debug.Assert(m.Rows >= m.Columns);

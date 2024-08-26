@@ -1,5 +1,5 @@
-# MultiPrecisionComplexFitting
- MultiPrecision Complex Fitting Implements
+# AAAFitting
+ AAA Complex Fitting Implements
 
 ## The AAA algorithm
 

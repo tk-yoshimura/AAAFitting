@@ -21,8 +21,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="MultiPrecisionComplexFitting">
-      <HintPath>..\MultiPrecisionComplexFitting\bin\Debug\net8.0\MultiPrecisionComplexFitting.dll</HintPath>
+    <Reference Include="AAAFitting">
+      <HintPath>..\AAAFitting\bin\Debug\net8.0\AAAFitting.dll</HintPath>
     </Reference>
   </ItemGroup>
 
