@@ -10,7 +10,7 @@ namespace AAAFitting {
     // SIAM Journal on Scientific Computing 2018 40:3, A1494-A1522
     // https://doi.org/10.1137/16M1106122
     public static class AAAFitter<N> where N : struct, IConstant {
-        public static BarycentricRational<N> ExecuteFitting(
+        public static BarycentricRational<N> Fit(
             ComplexVector<N> z, ComplexVector<N> f,
             MultiPrecision<N> reltol, MultiPrecision<N> abstol, int max_points = 128) {
 

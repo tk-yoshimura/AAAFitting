@@ -23,7 +23,7 @@ namespace AAAFitting {
             );
         }
 
-        public Complex<N> FittingValue(Complex<N> z) {
+        public Complex<N> Regress(Complex<N> z) {
             Complex<N> n = Complex<N>.Zero, d = Complex<N>.Zero;
 
             foreach ((Complex<N> node, Complex<N> value, Complex<N> weight) in Parameters) {
@@ -43,7 +43,7 @@ namespace AAAFitting {
         }
 
         public ComplexVector<N> FittingValue(ComplexVector<N> z) {
-            ComplexVector<N> r = (FittingValue, z);
+            ComplexVector<N> r = (Regress, z);
 
             return r;
         }
