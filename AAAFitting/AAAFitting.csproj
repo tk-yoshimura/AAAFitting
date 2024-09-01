@@ -18,9 +18,9 @@
 
   <ItemGroup>
     <PackageReference Include="TYoshimura.MultiPrecision" Version="6.3.4" />
-    <PackageReference Include="TYoshimura.MultiPrecision.Algebra" Version="2.1.2" />
-    <PackageReference Include="TYoshimura.MultiPrecision.ComplexAlgebra" Version="1.0.2" />
-    <PackageReference Include="TYoshimura.MultiPrecision.CurveFitting" Version="1.8.1" />
+    <PackageReference Include="TYoshimura.MultiPrecision.Algebra" Version="2.1.8" />
+    <PackageReference Include="TYoshimura.MultiPrecision.ComplexAlgebra" Version="1.0.8" />
+    <PackageReference Include="TYoshimura.MultiPrecision.CurveFitting" Version="1.8.2" />
   </ItemGroup>
 
 </Project>
